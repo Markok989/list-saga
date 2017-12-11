@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import createSagaMiddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga'; // ubacivanje sage
 
 import saga from './saga';
 
@@ -8,9 +8,11 @@ import reducers from '../reducers';
 import initialState from './initial-state';
 
 import { fetchItems } from '../actions/items-actions';
-import { startListeningToCountdown } from '../actions/countdown-actions';
+//import { startListeningToCountdown } from '../actions/countdown-actions';
+
 
 const sagaMiddleware = createSagaMiddleware();
+
 
 const middleware = [thunk, sagaMiddleware];
 const enhancers = [];
@@ -22,7 +24,8 @@ const store = createStore(
   composeEnhancers(applyMiddleware(...middleware), ...enhancers),
 );
 
-sagaMiddleware.run(saga);
+sagaMiddleware.run(saga); // pokrece generator
+
 
 store.dispatch(fetchItems());
 // store.dispatch(startListeningToCountdown());

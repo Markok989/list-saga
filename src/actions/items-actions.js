@@ -8,6 +8,7 @@ import {
 
 import Api from '../lib/api';
 
+
 export const fetchItems = () => ({
   type: 'FETCH_ITEMS'
 });

@@ -1,8 +1,12 @@
+
+// saga u mesto thank, koristi se function generator za odlaganje
+
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 
 import Api from '../lib/api';
 
 import { updateAllItems } from '../actions/items-actions';
+
 
 export default function* rootSaga() {
   yield all([fetchItemsFromApi()]);
@@ -11,6 +15,7 @@ export default function* rootSaga() {
 export function* fetchItemsFromApi() {
   yield takeEvery('FETCH_ITEMS', makeApiRequest);
 }
+
 
 export function* makeApiRequest() {
   const items = yield call(Api.getAll);
